@@ -14,11 +14,10 @@
   .fv {
     width: 100%;
     height: 100vh;
-    height: var(--app-height);
 
     &_container {
       width: 100%;
-      height: 100%;
+      height: var(--app-height);
       position: fixed;
       top: 0;
       left: 0;
@@ -37,25 +36,38 @@
         object-fit: cover;
       }
     }
+
+    @include maxW(1023px) {
+      height: var(--app-height);
+    }
   }
   //   ===== heading =====
   .hd {
     position: absolute;
-    bottom: calc(100vh + 60px);
-    left: 40px;
+    width: 100%;
+    height: var(--app-height);
+    top: 0;
     z-index: 1;
 
-    @include maxW(1023px) {
-      bottom: calc(var(--app-height) + 35px);
-      left: 0;
-      width: 100%;
-      padding: 0 32px;
+    &_container {
+      position: absolute;
+      bottom: 60px;
+      left: 40px;
+    }
 
-      h1 svg {
+    @include maxW(1023px) {
+      &_container {
+        bottom: 35px;
+        left: 0;
         width: 100%;
-        max-width: 350px;
-        height: auto;
-        margin: 0 auto;
+        padding: 0 32px;
+
+        h1 svg {
+          width: 100%;
+          max-width: 350px;
+          height: auto;
+          margin: 0 auto;
+        }
       }
     }
 
@@ -105,6 +117,121 @@
 
   // ===== intro =====
   .intro {
-    height: 100vh;
+    &_container {
+      margin-top: 61px;
+
+      @include maxW(1023px) {
+        margin-top: 53px;
+      }
+    }
+
+    &_desc {
+      text-align: center;
+      padding: 0 25px;
+
+      h2 {
+        font-size: 2rem;
+        font-weight: 700;
+        line-height: 1.75;
+      }
+
+      p {
+        margin-top: 39px;
+        font-size: 1.5rem;
+        line-height: 1.9;
+      }
+
+      @include maxW(1023px) {
+        padding: 0 19px;
+
+        h2 {
+          font-size: 1.9rem;
+          line-height: 1.61;
+        }
+
+        p {
+          margin-top: 22px;
+          font-size: 1.3rem;
+          line-height: 1.69;
+        }
+      }
+    }
+
+    &_lead {
+      margin-top: 109px;
+      border-top: 1px solid $line-cl;
+      border-bottom: 1px solid $line-cl;
+      padding: 30px 0;
+
+      @include maxW(1023px) {
+        margin-top: 101px;
+        padding: 50px 32px;
+      }
+    }
+
+    &_group {
+      width: 63.75%;
+      margin: 0 auto;
+
+      &_inner {
+        display: grid;
+        grid-template-columns: 43.57% 1fr;
+        align-items: center;
+        gap: 70px;
+      }
+
+      @include maxW(1023px) {
+        width: 100%;
+
+        &_inner {
+          display: block;
+        }
+      }
+    }
+
+    &_left {
+      display: block;
+      z-index: 1;
+      position: relative;
+      height: 100%;
+      padding-bottom: calc(550 / 400 * 100%);
+      background-color: $img-cl;
+
+      img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      @include maxW(1023px) {
+        padding-bottom: calc(344 / 250 * 100%);
+      }
+    }
+
+    &_right {
+      p {
+        font-size: 1.5rem;
+        line-height: 1.9;
+      }
+    }
+
+    &_link {
+      display: inline-block;
+      margin-top: 33px;
+      padding: 13px 26px;
+      font-size: 1.5rem;
+      font-weight: 700;
+      border: 1px solid $line-cl;
+      border-radius: 23px;
+      transition: 0.2s ease-in;
+
+      &:hover {
+        background-color: $line-cl;
+        color: $white-cl;
+      }
+    }
   }
 }
